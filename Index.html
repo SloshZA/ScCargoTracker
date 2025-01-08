@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Star Citizen Cargo Tracker</title>
+  <link rel="stylesheet" href="css/styles.css"> <!-- Updated path to CSS -->
+</head>
+<body>
+
+  <div class="theme-switch-wrapper">
+    <label class="theme-switch" for="checkbox">
+      <input type="checkbox" id="checkbox" />
+      <div class="slider round"></div>
+    </label>
+    <em>Dark Mode</em>
+  </div>
+
+  <h1>Star Citizen Cargo Hauling Tracker</h1>
+
+  <!-- Navigation Tabs -->
+  <div class="tabs">
+    <button class="tablinks" id="deliveriesTab" onclick="openTab(event, 'Deliveries')">Deliveries</button>
+    <button class="tablinks" id="pickupsTab" onclick="openTab(event, 'Pickups')">Pick-ups</button>
+    <button class="tablinks" id="historyTab" onclick="openTab(event, 'History')">History</button>
+    <button class="tablinks" id="payoutsTab" onclick="openTab(event, 'Payouts')">Payouts</button>
+    <button class="tablinks" id="preferencesTab" onclick="openTab(event, 'Preferences')">Preferences</button>
+  </div>
+
+  <!-- Deliveries Form Section -->
+  <div id="Deliveries" class="tabcontent">
+    <h2>Deliveries</h2>
+
+    <!-- Delivery Form Area (location type, location, drop-off point, commodity, amount) -->
+    <div class="form-section">
+      <div class="form-row">
+        <!-- Group location type and location together -->
+        <div class="form-group">
+          <label for="locationType">Location Type:</label>
+          <select id="locationType" name="locationType">
+            <option value="planet">Planet</option>
+            <option value="station">Station</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="location">Location:</label>
+          <select id="location" name="location"></select>
+        </div>
+        <div class="form-group">
+          <label for="moon">Moon:</label>
+          <select id="moon" name="moon"></select>
+        </div>
+        <!-- Other dropdowns -->
+        <div class="form-group">
+          <label for="dropOffPoint">Drop-Off Point:</label>
+          <select id="dropOffPoint" name="dropOffPoint"></select>
+        </div>
+        <div class="form-group">
+          <label for="commodity">Commodity:</label>
+          <select id="commodity" name="commodity" class="commodity-dropdown">
+            <option value="commodity1">Commodity 1</option>
+            <option value="commodity2">Commodity 2</option>
+            <option value="commodity3">Commodity 3</option>
+            <!-- Add more options as needed -->
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group amount-group">
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" name="amount" min="1" required>
+      </div>
+
+      <div class="button-group">
+        <button id="addEntryBtn">Add Entry</button>
+        <button id="moveDeliveredBtn" class="action-btn" onclick="moveDeliveredToHistory()">Move Delivered to History</button>
+        <button id="clearLogBtn">Clear Log</button>
+      </div>
+    </div>
+
+    <!-- Cargo Manifest Section -->
+    <div id="resultTable">
+      <table>
+        <thead>
+          <tr>
+            <th>Drop-off Point</th>
+            <th>Commodity</th>
+            <th>Amount</th>
+            <th>Actions</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Entries will be added dynamically here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="Pickups" class="tabcontent">
+    <h2>Pick-ups</h2>
+    <p>Pick-up tracking form and table here...</p>
+  </div>
+
+  <div id="History" class="tabcontent">
+    <h2>Delivery History</h2>
+    <div id="historyContainer">
+      <!-- History table will be dynamically generated here -->
+    </div>
+  </div>
+  
+
+
+  <div id="Payouts" class="tabcontent">
+    <h2>Payouts</h2>
+    <p>Payouts tracking form and table here...</p>
+  </div>
+
+  <div id="Preferences" class="tabcontent">
+    <h2>Preferences</h2>
+    
+    <div class="preferences-section">
+      <div class="form-group">
+        <label for="accentColor">Accent Color:</label>
+        <input type="color" id="accentColor" value="#4CAF50">
+        <button onclick="resetToDefaultColor()" class="reset-btn">Reset to Default</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/script.js"></script> <!-- Updated path to JS -->
+
+  <div id="notification"></div>
+</body>
+</html>
+
